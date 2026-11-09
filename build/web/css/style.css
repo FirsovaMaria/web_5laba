@@ -1,0 +1,137 @@
+.header-panel {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.profile-link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    background: #DB7093;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #C71585;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+.btn-danger:hover {
+    background: #a71d2a;
+}
+
+.main-content {
+    margin-top: 5px; 
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.top-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 15px;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.news-item {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.login-container {
+    width: 320px;
+    margin: 100px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #DB7093;
+    outline: none;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+}
