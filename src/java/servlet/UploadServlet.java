@@ -6,6 +6,7 @@ package servlet;
  */
 
 import classes.User;
+import classes.AvatarStorage;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -43,6 +44,9 @@ public class UploadServlet extends HttpServlet {
             
             // Обновляем данные пользователя
             user.setAvatar(fileName); // сохраняем в объекте
+            
+            // Сохраняем имя файла в txt-файл
+            AvatarStorage.save(user.getLogin(), fileName); 
         }
         resp.sendRedirect(req.getContextPath() + "/profile");
     }

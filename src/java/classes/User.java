@@ -1,28 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package classes;
 
-/**
- *
- * @author masha
- */
 public class User {
     private String login;
-    private String password;
+    private String passwordHash; 
+    private String salt;         
     private String role; // "admin", "moderator", "user" 
     private String avatar;
-    private String salt;
-    
-    public User(String login, String password, String role, String avatar) {
+
+    public User(String login, String passwordHash, String salt, String role) {
         this.login = login;
-        this.password = password;
+        this.passwordHash = passwordHash;
+        this.salt = salt;
         this.role = role;
     }
-    // Геттеры и сеттеры
+
+    // Геттеры
     public String getLogin() { return login; }
-    public String getPassword() { return password; }
+    public String getPasswordHash() { return passwordHash; }
+    public String getSalt() { return salt; }
     public String getRole() { return role; }
     public String getAvatar() { return avatar; }
     public void setAvatar(String avatar) { this.avatar = avatar; }

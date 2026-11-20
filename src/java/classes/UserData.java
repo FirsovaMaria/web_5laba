@@ -16,10 +16,10 @@ public class UserData {
     //ключ - логин, значение - объект User
     private static final Map<String, User> users = new HashMap<>();
 
-    public static User getUser(String login){
+    public static User getUser(String login) {
         return users.get(login);
     }
-    
+
     public static boolean register(String login, String password) {
         if (users.containsKey(login)) {
             return false;
@@ -29,7 +29,7 @@ public class UserData {
         users.put(login, new User(login, hash, salt, "user"));
         return true;
     }
-    
+
     private static void createUser(String login, String password, String role) {
         String salt = PasswordUtil.generateSalt();
         String hash = PasswordUtil.hashPassword(password, salt);
@@ -40,5 +40,14 @@ public class UserData {
         createUser("admin", "123", "admin");
         createUser("moder", "123", "moderator");
         createUser("user", "123", "user");
+
+        //загружаем аватарки из файла и раздаем их пользователям
+        HashMap<String, String> savedAvatars = AvatarStorage.load();
+        for (String login : savedAvatars.keySet()) {
+            User u = users.get(login);
+            if (u != null) {
+                u.setAvatar(savedAvatars.get(login));
+            }
+        }
     }
 }

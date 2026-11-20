@@ -22,7 +22,7 @@ public class AvatarStorage {
         
         try (BufferedReader reader = new BufferedReader(new FileReader(file))){
             String line;
-            while ((line = reader.toString())!= null){
+            while ((line = reader.readLine())!= null){
                 String[] parts = line.split("=", 2);
                 if (parts.length == 2){
                     avatars.put(parts[0], parts[1]);
@@ -32,7 +32,20 @@ public class AvatarStorage {
         }catch(IOException e){
             System.out.println("Ошибка чтения аватарок: " + e.getMessage());
         }
-        
         return avatars;
    }
+    
+    public static void save(String login, String avatarFileName){
+        HashMap<String, String> avatars = load(); // берем текущие
+        avatars.put(login, avatarFileName);   // обновляем нужного юзера
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            for (HashMap.Entry<String, String> entry : avatars.entrySet()) {
+                writer.write(entry.getKey() + "=" + entry.getValue());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка записи аватарки: " + e.getMessage());
+        }
+    }
 }

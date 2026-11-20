@@ -10,6 +10,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import classes.User;
 import classes.UserData;
+import classes.PasswordUtil;
 
 /**
  *
@@ -25,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 
         User user = UserData.getUser(login);
 
-        if (user != null && user.getPassword().equals(password)) {
+        if (user != null && PasswordUtil.checkPassword(password, user.getPasswordHash(), user.getSalt())) {
             // если пароль верный, то создаем сессию
             HttpSession session = req.getSession();
             session.setAttribute("currentUser", user);
