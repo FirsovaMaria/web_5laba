@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/servlet/LogoutServlet.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/classes/NewsData.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/classes/User.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/classes/UserData.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/classes/VisitCounter.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/classes/News.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/servlet/LoginServlet.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/servlet/NewsServlet.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/servlet/ProfileServlet.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/servlet/UploadServlet.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/classes/PasswordUtil.java</file>
+            <file>file:/C:/Users/masha/OneDrive/Документы/NetBeansProjects/web_5laba/src/java/classes/AvatarStorage.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -13,6 +13,7 @@ public class User {
     private String password;
     private String role; // "admin", "moderator", "user" 
     private String avatar;
+    private String salt;
     
     public User(String login, String password, String role, String avatar) {
         this.login = login;
