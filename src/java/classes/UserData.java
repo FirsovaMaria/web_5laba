@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package classes;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,16 +12,33 @@ import java.util.Map;
  * @author masha
  */
 public class UserData {
+
     //ключ - логин, значение - объект User
     private static final Map<String, User> users = new HashMap<>();
 
-    static {
-        users.put("admin", new User("admin", "123", "admin", null));
-        users.put("moder", new User("moder", "123", "moderator", null));
-        users.put("user",  new User("user",  "123", "user", null));
+    public static User getUser(String login){
+        return users.get(login);
+    }
+    
+    public static boolean register(String login, String password) {
+        if (users.containsKey(login)) {
+            return false;
+        }
+        String salt = PasswordUtil.generateSalt();
+        String hash = PasswordUtil.hashPassword(password, salt);
+        users.put(login, new User(login, hash, salt, "user"));
+        return true;
+    }
+    
+    private static void createUser(String login, String password, String role) {
+        String salt = PasswordUtil.generateSalt();
+        String hash = PasswordUtil.hashPassword(password, salt);
+        users.put(login, new User(login, hash, salt, role));
     }
 
-    public static User getUser(String login) {
-        return users.get(login);
+    static {
+        createUser("admin", "123", "admin");
+        createUser("moder", "123", "moderator");
+        createUser("user", "123", "user");
     }
 }
