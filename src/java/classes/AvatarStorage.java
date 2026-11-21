@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class AvatarStorage {
     private static final String FILE_NAME = "avatars.txt";
     
-    //загружаем все сохраненные аватарки из файла в память при старте
+    //Р·Р°РіСЂСѓР¶Р°РµРј РІСЃРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹Рµ Р°РІР°С‚Р°СЂРєРё РёР· С„Р°Р№Р»Р° РІ РїР°РјСЏС‚СЊ РїСЂРё СЃС‚Р°СЂС‚Рµ
     public static HashMap<String, String> load(){
         HashMap<String, String> avatars = new HashMap<>();
         File file = new File(FILE_NAME);
@@ -30,14 +30,14 @@ public class AvatarStorage {
                 }
             }
         }catch(IOException e){
-            System.out.println("Ошибка чтения аватарок: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° С‡С‚РµРЅРёСЏ Р°РІР°С‚Р°СЂРѕРє: " + e.getMessage());
         }
         return avatars;
    }
     
     public static void save(String login, String avatarFileName){
-        HashMap<String, String> avatars = load(); // берем текущие
-        avatars.put(login, avatarFileName);   // обновляем нужного юзера
+        HashMap<String, String> avatars = load(); // Р±РµСЂРµРј С‚РµРєСѓС‰РёРµ
+        avatars.put(login, avatarFileName);   // РѕР±РЅРѕРІР»СЏРµРј РЅСѓР¶РЅРѕРіРѕ СЋР·РµСЂР°
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (HashMap.Entry<String, String> entry : avatars.entrySet()) {
@@ -45,7 +45,7 @@ public class AvatarStorage {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Ошибка записи аватарки: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° Р·Р°РїРёСЃРё Р°РІР°С‚Р°СЂРєРё: " + e.getMessage());
         }
     }
 }
