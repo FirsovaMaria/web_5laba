@@ -14,7 +14,7 @@ public class User {
         this.role = role;
     }
 
-    // Геттеры
+    // Р“РµС‚С‚РµСЂС‹
     public String getLogin() { return login; }
     public String getPasswordHash() { return passwordHash; }
     public String getSalt() { return salt; }
