@@ -17,13 +17,13 @@ public class NewsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        //получаем данные
+        //РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ
         req.setAttribute("news", data.findAll());
         req.setAttribute("serverTime", LocalDateTime.now());
         
         req.setAttribute("visits", VisitCounter.increment());
         
-        //передаем в JSP
+        //РїРµСЂРµРґР°РµРј РІ JSP
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
