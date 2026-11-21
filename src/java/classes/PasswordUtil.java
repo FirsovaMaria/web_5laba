@@ -13,34 +13,34 @@ import javax.crypto.spec.PBEKeySpec;
 
 public class PasswordUtil {
     
-    //генерирует случайную соль
+    //РіРµРЅРµСЂРёСЂСѓРµС‚ СЃР»СѓС‡Р°Р№РЅСѓСЋ СЃРѕР»СЊ
     public static String generateSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
-        random.nextBytes(salt); //заполняет целый массив байтов случайными значениями.
+        random.nextBytes(salt); //Р·Р°РїРѕР»РЅСЏРµС‚ С†РµР»С‹Р№ РјР°СЃСЃРёРІ Р±Р°Р№С‚РѕРІ СЃР»СѓС‡Р°Р№РЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё.
         return Base64.getEncoder().encodeToString(salt);
-                //Base64.getEncoder() - кодировает байты в текст.
-                //encodeToString(salt) - переводит массив байтов в строку.
+                //Base64.getEncoder() - СЃРѕР·РґР°С‘С‚ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РѕР±СЉРµРєС‚ Base64.Encoder, РєРѕС‚РѕСЂС‹Р№ СѓРјРµРµС‚ РєРѕРґРёСЂРѕРІР°С‚СЊ Р±Р°Р№С‚С‹ РІ Base64-С‚РµРєСЃС‚
+                //encodeToString(salt) - РєРѕРґРёСЂСѓРµС‚ Р±Р°Р№С‚С‹ РІ Base64 Рё РІРѕР·РІСЂР°С‰Р°РµС‚ String
     }
 
-    //хеширует пароль с солью
+    //С…РµС€РёСЂСѓРµС‚ РїР°СЂРѕР»СЊ СЃ СЃРѕР»СЊСЋ
     public static String hashPassword(String password, String salt) {
         try {
-            //использует алгоритм PBKDF2WithHmacSHA256
+            //РёСЃРїРѕР»СЊР·СѓРµС‚ Р°Р»РіРѕСЂРёС‚Рј PBKDF2WithHmacSHA256
             PBEKeySpec spec = new PBEKeySpec(
-            password.toCharArray(),//по стадндартам передается массив символов, в отличии от String, после использования мы можем «затереть» этот массив нулями в памяти, чтобы злоумышленник не смог вытащить пароль
-            Base64.getDecoder().decode(salt), //соль декодируем обратно в массив байтов, так как так нужно алгоритму
-            65536, //количество итераций, сколько раз алгоритм «перемешает» пароль и соль
-            128);//длина итогового ключа в битах
+            password.toCharArray(),//РїРѕ СЃС‚Р°РґРЅРґР°СЂС‚Р°Рј РїРµСЂРµРґР°РµС‚СЃСЏ РјР°СЃСЃРёРІ СЃРёРјРІРѕР»РѕРІ, РІ РѕС‚Р»РёС‡РёРё РѕС‚ String, РїРѕСЃР»Рµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РјС‹ РјРѕР¶РµРј В«Р·Р°С‚РµСЂРµС‚СЊВ» СЌС‚РѕС‚ РјР°СЃСЃРёРІ РЅСѓР»СЏРјРё РІ РїР°РјСЏС‚Рё, С‡С‚РѕР±С‹ Р·Р»РѕСѓРјС‹С€Р»РµРЅРЅРёРє РЅРµ СЃРјРѕРі РІС‹С‚Р°С‰РёС‚СЊ РїР°СЂРѕР»СЊ
+            Base64.getDecoder().decode(salt), //СЃРѕР»СЊ РґРµРєРѕРґРёСЂСѓРµРј РѕР±СЂР°С‚РЅРѕ РІ РјР°СЃСЃРёРІ Р±Р°Р№С‚РѕРІ, С‚Р°Рє РєР°Рє С‚Р°Рє РЅСѓР¶РЅРѕ Р°Р»РіРѕСЂРёС‚РјСѓ
+            65536, //РєРѕР»РёС‡РµСЃС‚РІРѕ РёС‚РµСЂР°С†РёР№, СЃРєРѕР»СЊРєРѕ СЂР°Р· Р°Р»РіРѕСЂРёС‚Рј В«РїРµСЂРµРјРµС€Р°РµС‚В» РїР°СЂРѕР»СЊ Рё СЃРѕР»СЊ
+            128);//РґР»РёРЅР° РёС‚РѕРіРѕРІРѕРіРѕ РєР»СЋС‡Р° РІ Р±РёС‚Р°С…
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
             byte[] hash = factory.generateSecret(spec).getEncoded();
             return Base64.getEncoder().encodeToString(hash);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            throw new RuntimeException("Ошибка при хешировании пароля", e);
+            throw new RuntimeException("РћС€РёР±РєР° РїСЂРё С…РµС€РёСЂРѕРІР°РЅРёРё РїР°СЂРѕР»СЏ", e);
         }
     }
 
-    //проверка пароля при входе
+    //РїСЂРѕРІРµСЂРєР° РїР°СЂРѕР»СЏ РїСЂРё РІС…РѕРґРµ
     public static boolean checkPassword(String enteredPassword, String storedHash, String salt) {
         String newHash = hashPassword(enteredPassword, salt);
         return newHash.equals(storedHash);
