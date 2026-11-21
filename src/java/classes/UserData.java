@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class UserData {
 
-    //ключ - логин, значение - объект User
+    //РєР»СЋС‡ - Р»РѕРіРёРЅ, Р·РЅР°С‡РµРЅРёРµ - РѕР±СЉРµРєС‚ User
     private static final Map<String, User> users = new HashMap<>();
 
     public static User getUser(String login) {
@@ -41,7 +41,7 @@ public class UserData {
         createUser("moder", "123", "moderator");
         createUser("user", "123", "user");
 
-        //загружаем аватарки из файла и раздаем их пользователям
+        //Р·Р°РіСЂСѓР¶Р°РµРј Р°РІР°С‚Р°СЂРєРё РёР· С„Р°Р№Р»Р° Рё СЂР°Р·РґР°РµРј РёС… РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
         HashMap<String, String> savedAvatars = AvatarStorage.load();
         for (String login : savedAvatars.keySet()) {
             User u = users.get(login);
