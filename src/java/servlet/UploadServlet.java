@@ -30,22 +30,22 @@ public class UploadServlet extends HttpServlet {
             return;
         }
 
-        Part filePart = req.getPart("avatarFile"); // Получаем файл
+        Part filePart = req.getPart("avatarFile"); // РџРѕР»СѓС‡Р°РµРј С„Р°Р№Р»
         String fileName = filePart.getSubmittedFileName();
         
         if (fileName != null && !fileName.isEmpty()) {
-            // Папка для загрузки
+            // РџР°РїРєР° РґР»СЏ Р·Р°РіСЂСѓР·РєРё
             String uploadPath = req.getServletContext().getRealPath("") + File.separator + "uploads";
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) uploadDir.mkdir();
 
-            // Сохраняем файл
+            // РЎРѕС…СЂР°РЅСЏРµРј С„Р°Р№Р»
             filePart.write(uploadPath + File.separator + fileName);
             
-            // Обновляем данные пользователя
-            user.setAvatar(fileName); // сохраняем в объекте
+            // РћР±РЅРѕРІР»СЏРµРј РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+            user.setAvatar(fileName); // СЃРѕС…СЂР°РЅСЏРµРј РІ РѕР±СЉРµРєС‚Рµ
             
-            // Сохраняем имя файла в txt-файл
+            // РЎРѕС…СЂР°РЅСЏРµРј РёРјСЏ С„Р°Р№Р»Р° РІ txt-С„Р°Р№Р»
             AvatarStorage.save(user.getLogin(), fileName); 
         }
         resp.sendRedirect(req.getContextPath() + "/profile");
