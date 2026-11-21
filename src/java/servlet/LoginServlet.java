@@ -27,12 +27,12 @@ public class LoginServlet extends HttpServlet {
         User user = UserData.getUser(login);
 
         if (user != null && PasswordUtil.checkPassword(password, user.getPasswordHash(), user.getSalt())) {
-            // если пароль верный, то создаем сессию
+            // РµСЃР»Рё РїР°СЂРѕР»СЊ РІРµСЂРЅС‹Р№, С‚Рѕ СЃРѕР·РґР°РµРј СЃРµСЃСЃРёСЋ
             HttpSession session = req.getSession();
             session.setAttribute("currentUser", user);
-            resp.sendRedirect(req.getContextPath() + "/news"); // Успех, идем на новости
+            resp.sendRedirect(req.getContextPath() + "/news"); // РЈСЃРїРµС…, РёРґРµРј РЅР° РЅРѕРІРѕСЃС‚Рё
         } else {
-            // если ошибка, то возвращает обратно к форме
+            // РµСЃР»Рё РѕС€РёР±РєР°, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РѕР±СЂР°С‚РЅРѕ Рє С„РѕСЂРјРµ
             resp.sendRedirect(req.getContextPath() + "/login.jsp?error=1");
         }
     }
