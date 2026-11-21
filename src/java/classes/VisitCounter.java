@@ -15,13 +15,13 @@ import java.io.IOException;
  * @author masha
  */
 public class VisitCounter {
-    public static final String FILE_NAME = "visits.txt"; // имя файла
+    public static final String FILE_NAME = "visits.txt"; // РёРјСЏ С„Р°Р№Р»Р°
     
     public static synchronized long increment() {
         long count = 0;
-        File file = new File(FILE_NAME); // путь к файлу
+        File file = new File(FILE_NAME); // РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
         
-        // Чтение с помощью BufferedReader
+        // Р§С‚РµРЅРёРµ СЃ РїРѕРјРѕС‰СЊСЋ BufferedReader
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line = reader.readLine();
@@ -29,17 +29,17 @@ public class VisitCounter {
                     count = Long.parseLong(line.trim());
                 }
             } catch (IOException | NumberFormatException e) {
-                System.out.println("Ошибка при чтении счетчика: " + e.getMessage());
+                System.out.println("РћС€РёР±РєР° РїСЂРё С‡С‚РµРЅРёРё СЃС‡РµС‚С‡РёРєР°: " + e.getMessage());
             }
         } 
         
         count++;
         
-        // Запись обратно в файл
+        // Р—Р°РїРёСЃСЊ РѕР±СЂР°С‚РЅРѕ РІ С„Р°Р№Р»
         try(FileWriter writer = new FileWriter(file)){
             writer.write(String.valueOf(count));
         }catch(IOException e){
-            System.out.println("Ошибка при записи счетчика: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё СЃС‡РµС‚С‡РёРєР°: " + e.getMessage());
         }
         
         return count;
