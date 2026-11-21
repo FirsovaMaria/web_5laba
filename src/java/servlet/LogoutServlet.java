@@ -13,12 +13,12 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        // Получает текущую сессию (если она есть)
+        // РџРѕР»СѓС‡Р°РµС‚ С‚РµРєСѓС‰СѓСЋ СЃРµСЃСЃРёСЋ (РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ)
         HttpSession session = req.getSession(false);
         if (session != null) {
-            session.invalidate(); // Полностью уничтожает сессию
+            session.invalidate(); // РџРѕР»РЅРѕСЃС‚СЊСЋ СѓРЅРёС‡С‚РѕР¶Р°РµС‚ СЃРµСЃСЃРёСЋ
         }
-        // Перенаправляет на главную страницу
+        // РџРµСЂРµРЅР°РїСЂР°РІР»СЏРµС‚ РЅР° РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
         resp.sendRedirect(req.getContextPath() + "/news");
     }
 }
