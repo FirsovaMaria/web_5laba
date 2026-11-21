@@ -18,12 +18,12 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        // Проверяем, залогинен ли пользователь
-        HttpSession session = req.getSession(false); // просит у сервера текущую сессию пользователя (чтобы проверить, залогинен ли он). false означает: «если сессии нет, верни null, а не создавай новую».
+        // РџСЂРѕРІРµСЂСЏРµРј, Р·Р°Р»РѕРіРёРЅРµРЅ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
+        HttpSession session = req.getSession(false); // РїСЂРѕСЃРёС‚ Сѓ СЃРµСЂРІРµСЂР° С‚РµРєСѓС‰СѓСЋ СЃРµСЃСЃРёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (С‡С‚РѕР±С‹ РїСЂРѕРІРµСЂРёС‚СЊ, Р·Р°Р»РѕРіРёРЅРµРЅ Р»Рё РѕРЅ). false РѕР·РЅР°С‡Р°РµС‚: В«РµСЃР»Рё СЃРµСЃСЃРёРё РЅРµС‚, РІРµСЂРЅРё null, Р° РЅРµ СЃРѕР·РґР°РІР°Р№ РЅРѕРІСѓСЋВ».
         if (session == null || session.getAttribute("currentUser") == null) {
-            resp.sendRedirect(req.getContextPath() + "/login.jsp");//Если человек не вводил логин и пароль — мы его возвращаем обратно на страницу входа
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");//Р•СЃР»Рё С‡РµР»РѕРІРµРє РЅРµ РІРІРѕРґРёР» Р»РѕРіРёРЅ Рё РїР°СЂРѕР»СЊ вЂ” РјС‹ РµРіРѕ РІРѕР·РІСЂР°С‰Р°РµРј РѕР±СЂР°С‚РЅРѕ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РІС…РѕРґР°
             return;
         }
-        req.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);//getRequestDispatcher - ищет файл внутри веб-приложения, forward - передает ему управление и данные
+        req.getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);//getRequestDispatcher - РёС‰РµС‚ С„Р°Р№Р» РІРЅСѓС‚СЂРё РІРµР±-РїСЂРёР»РѕР¶РµРЅРёСЏ, forward - РїРµСЂРµРґР°РµС‚ РµРјСѓ СѓРїСЂР°РІР»РµРЅРёРµ Рё РґР°РЅРЅС‹Рµ
     }
 }
